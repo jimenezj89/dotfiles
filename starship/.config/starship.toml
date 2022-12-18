@@ -1,17 +1,55 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
-add_newline = false
+format = """
+$character\
+[](bg:#818596 fg:#0f1117)\
+$directory\
+[](bg:#2e313f fg:#818596)\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+[ ](bg:bold black fg:#2e313f)\
+$sudo
+"""
 
-# Replace the "❯" symbol in the prompt with "➜"
-[character] # The name of the module we are configuring is "character"
-success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[character]
+format = '$symbol'
+success_symbol = "[ ﬦ ](bg:#0f1117 fg:bold green)"
+error_symbol = "[ ﬦ ](bg:#0f1117 fg:bold red)"
+vicmd_symbol = '[ ﬦ ](bg:#0f1117 fg:bold yellow)'
+vimcmd_visual_symbol = '[ ﬦ ](bg:#0f1117 fg:bold cyan)'
+
+[directory]
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+style = "bg:#818596 fg:#17171b"
+read_only_style = "bg:#818596 fg:#17171b"
+truncation_symbol = ".../"
+
+[git_branch]
+format = "[ $symbol$branch(:$remote_branch) ]($style)"
+style = "bg:#2e313f fg:bold #6b7089"
+
+[git_commit]
+style = "bg:#2e313f fg:#6b7089"
+
+[git_state]
+format = '\([$state($progress_current/$progress_total)]($style)\)' 
+style = "bg:#2e313f fg:#6b7089"
+
+[git_status]
+format = '([ $all_status$ahead_behind ]($style))'
+style = "bg:#2e313f fg:#6b7089"
 
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
 
 [line_break]
-disabled = true
+disabled = false
 
