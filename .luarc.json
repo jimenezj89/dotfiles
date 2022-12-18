@@ -1,0 +1,33 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.workspace.library": [
+        "/Users/jimenezj/.config/nvim",
+        "/Users/jimenezj/.local/share/nvim/site",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/iceberg.vim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/LuaSnip",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/mason.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/packer.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/vim-sleuth",
+        "/opt/homebrew/Cellar/neovim/0.8.1/share/nvim/runtime",
+        "/opt/homebrew/Cellar/neovim/0.8.1/share/nvim/runtime/pack/dist/opt/matchit",
+        "/opt/homebrew/Cellar/neovim/0.8.1/lib/nvim",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp/after",
+        "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/cmp_luasnip/after",
+        "${3rd}/luassert/library"
+    ]
+}
