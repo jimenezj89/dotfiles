@@ -1,5 +1,10 @@
 {
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.diagnostics.globals": [
+        "vim",
+        "ngx"
+    ],
+    "Lua.workspace.checkThirdParty": false,
     "Lua.workspace.library": [
         "/Users/jimenezj/.config/nvim",
         "/Users/jimenezj/.local/share/nvim/site",
@@ -28,6 +33,7 @@
         "/opt/homebrew/Cellar/neovim/0.8.1/lib/nvim",
         "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp/after",
         "/Users/jimenezj/.local/share/nvim/site/pack/packer/start/cmp_luasnip/after",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/OpenResty/library"
     ]
 }

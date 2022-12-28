@@ -48,6 +48,11 @@ require('packer').startup(function(use)
   -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'cocopon/iceberg.vim'
   use {
+    "jesseleite/nvim-noirbuddy",
+    requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
+  }
+--  use { "ellisonleao/gruvbox.nvim" }
+  use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
@@ -105,6 +110,9 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+-- Highlight cursor line
+vim.wo.cursorline = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -124,7 +132,15 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme iceberg]]
+
+require('noirbuddy').setup {
+  preset = 'kiwi',
+}
+--vim.o.background = "dark" -- or "light" for light mode
+--require("gruvbox").setup({
+--  contrast = 'hard', -- can be "hard", "soft" or empty string
+--})
+--vim.cmd([[colorscheme gruvbox]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -145,7 +161,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- See ceberg_minimal`:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -157,10 +173,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
+local noirbuddy_lualine = require('noirbuddy.plugins.lualine')
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'iceberg',
+    theme = noirbuddy_lualine.theme,
     component_separators = '|',
     section_separators = '',
   },
@@ -171,21 +188,21 @@ require('Comment').setup()
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
-}
+-- require('indent_blankline').setup {
+--   char = '┊',
+--   show_trailing_blankline_indent = false,
+-- }
 
 -- Gitsigns
 -- See `:help gitsigns.txt`
 require('gitsigns').setup {
-  signs = {
-    add = { text = '+' },
-    change = { text = '~' },
-    delete = { text = '_' },
-    topdelete = { text = '‾' },
-    changedelete = { text = '~' },
-  },
+  --  signs = {
+  --    add = { text = '' },
+  --    change = { text = '' },
+  --    delete = { text = '' },
+  --    topdelete = { text = '' },
+  --    changedelete = { text = '~' },
+  --  },
 }
 
 -- [[ Configure Telescope ]]
