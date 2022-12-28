@@ -45,13 +45,10 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
-  use 'cocopon/iceberg.vim'
   use {
     "jesseleite/nvim-noirbuddy",
     requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
   }
---  use { "ellisonleao/gruvbox.nvim" }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -62,6 +59,7 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'nvim-telescope/telescope-file-browser.nvim' }
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
@@ -133,14 +131,14 @@ vim.wo.signcolumn = 'yes'
 -- Set colorscheme
 vim.o.termguicolors = true
 
+vim.o.background = "dark" -- or "light" for light mode
+
 require('noirbuddy').setup {
   preset = 'kiwi',
+  colors = {
+    background = '#121212',
+  }
 }
---vim.o.background = "dark" -- or "light" for light mode
---require("gruvbox").setup({
---  contrast = 'hard', -- can be "hard", "soft" or empty string
---})
---vim.cmd([[colorscheme gruvbox]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -178,6 +176,8 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = noirbuddy_lualine.theme,
+    sections = noirbuddy_lualine.sections,
+    inactive_sections = noirbuddy_lualine.inactive_sections,
     component_separators = '|',
     section_separators = '',
   },
@@ -218,6 +218,8 @@ require('telescope').setup {
   },
 }
 
+require("telescope").setup {}
+require("telescope").load_extension "file_browser"
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
@@ -242,7 +244,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'php' },
 
   highlight = { enable = true },
   indent = { enable = true },
@@ -361,7 +363,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'luau_lsp', 'elixirls', 'bashls' }
+local servers = { 'luau_lsp', 'elixirls', 'bashls', 'phpactor' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
